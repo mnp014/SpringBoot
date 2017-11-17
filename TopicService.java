@@ -17,7 +17,7 @@ public class TopicService {
 		return topics;
 	}
 
-	
+// This method is us useing the ID in the TopicController.java
 	public Topic getTopic(String id) {
 		return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
 	}
