@@ -41,7 +41,20 @@ public class TopicController {
 		public void addTopic(@RequestBody Topic topic){
 		topicService.addTopic(topic);
 			}
+
 	
+	/* PUT REQUEST*/
+	@RequestMapping(method=RequestMethod.PUT, value= "/topics/{id}")           // Map this method to any request that is a POST and has value "/topics"
+		public void updateTopic(@RequestBody Topic topic, @PathVariable String id){
+		topicService.updateTopic(id, topic);
+			}
+	
+	/* POST REQUEST*/
+	@RequestMapping(method=RequestMethod.DELETE, value= "/topics/{id}")           // Map this method to any request that is a POST and has value "/topics"
+	public void deleteTopic(@PathVariable String id){                       //@Pathvariable tells this argument value 'id' contains value of variable in the path "/topics/{id}"
+		topicService.deleteTopic(id);
+			}
+
 	
 	
 	
