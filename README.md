@@ -1,2 +1,1 @@
-# SpringBoot
-Contains sample Spring boot application
+# refer :  https://spring.io/guides/gs/actuator-service/
