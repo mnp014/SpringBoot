@@ -1,0 +1,25 @@
+Goto> http://start.spring.io/
+
+
+
+Project Metadata
+Artifact coordinates
+
+Group 
+com.example.docker
+Artifact 
+docker-spring-boot
+----------------------------------
+Dependencies
+Add Spring Boot Starters and dependencies to your application
+
+Search for dependencies 
+
+Web, Security, JPA, Actuator, Devtools...               // search for web
+Selected Dependencies
+Web×
+Generate Project alt + ⏎
+-----------------------------------
+__________________________________________________________
+extract the downloaded zip and open pom.xml in any IDE
+__________________________________________________________
