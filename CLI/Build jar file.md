@@ -31,7 +31,7 @@ Output:
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 ```
-
+___
 #### To peek into the created jar file:
 ```
 > jar tvf target/myproject-0.0.1-SNAPSHOT.jar
