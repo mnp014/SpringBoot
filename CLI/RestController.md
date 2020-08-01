@@ -10,6 +10,7 @@ The request mapping can any of the following type:
  - `@PutMapping`                       For put request   
  - `@DeleteMapping`                    For delete request   
  - `@PatchMapping`                     For patch request   
+ **NOTE** - @GetMapping  == @RequestMapping(method=HttpMethod.GET)  
 ____
 #### Sample file
 ```
@@ -42,5 +43,72 @@ ____
 {name:[a-z]+} | Matches the regexp "[a-z]+" as a path variable named "name"      | "/projects/{project:[a-z]+}/versions" | "/projects/spring/versions"
 ```  
 ____
+#### Consumable Media Types
+ - Narrow the request mapping based on the Content-Type of the request.
+ ```
+ @PostMapping(path = "/pets", consumes = "application/json") 
+ public void addPet(@RequestBody Pet pet) {
+     // ...
+ }
+ ```
+#### Producible Media Types
+ - Narrow the request mapping based on the Producible Media Types
+ ```
+ @GetMapping(path = "/pets/{petId}", produces = "application/json") 
+ @ResponseBody
+ public Pet getPet(@PathVariable String petId) {
+     // ...
+ }
+ ```
+ #### Parameters, headers
+ - Narrow the request mapping based on the Parameters, headers Types
+ ```
+ @GetMapping(path = "/pets/{petId}", params = "myParam=myValue") 
+ public void findPet(@PathVariable String petId) {
+     // ...
+ }
+ ```
+____ 
+ #### Explicit Registrations
+  ```
+  @Configuration
+public class MyConfig {
 
+    @Autowired
+    public void setHandlerMapping(RequestMappingHandlerMapping mapping, UserHandler handler)  [1]
+            throws NoSuchMethodException {
+
+        RequestMappingInfo info = RequestMappingInfo
+                .paths("/user/{id}").methods(RequestMethod.GET).build(); [2] 
+
+        Method method = UserHandler.class.getMethod("getUser", Long.class);  [3]
+
+        mapping.registerMapping(info, handler, method); [4]
+    }
+}
+```
+[1] Inject the target handler and the handler mapping for controllers.  
+[2] Prepare the request mapping meta data.  
+[3] Get the handler method.  
+[4] Add the registration.  
+
+
+____
+
+***Also refer:***
+@RequestParam
+@RequestHeader
+@CookieValue
+@ModelAttribute
+@SessionAttributes
+@SessionAttribute
+@RequestAttribute
+**Redirect Attributes**
+Flash Attributes
+**Multipart**
+@RequestBody
+HttpEntity
+@ResponseBody
+ResponseEntity
+Jackson JSON
 
