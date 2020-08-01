@@ -33,3 +33,14 @@ public class Example {
 }
 ``` 
 ____
+#### URI patterns:
+```
+?             | Matches one character                                            | "/pages/t?st.html"                    | "/pages/t <E> st.html"
+*             | Matches zero or more characters within a path segment            | "/projects/*/versions"                | "/projects/ <spring> /versions"
+**            | Matches zero or more path segments until the end of the path     | "/resources/**"                       | "/resources/ <images/file.png">
+{name}        | Matches a path segment and captures it as a variable named "name"| "/projects/{project}/versions"        | "/projects/ <spring> /versions"
+{name:[a-z]+} | Matches the regexp "[a-z]+" as a path variable named "name"      | "/projects/{project:[a-z]+}/versions" | "/projects/spring/versions"
+```  
+____
+
+
